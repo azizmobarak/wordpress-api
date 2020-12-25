@@ -1,6 +1,8 @@
 #Add the following line to the .env file
 
 URL=https://example.com  -- without '/' at the end of line
+
+
 PASSWORD=XXX XXXX XXXXX XXX -- the password used by the application passwords plugin -- user by default are "admin"
 
 
