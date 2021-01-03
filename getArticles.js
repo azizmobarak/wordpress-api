@@ -21,9 +21,12 @@ const GetArticles = async(category, category_ID, tags, lang) => {
     await req.end(async function(res) {
         if (res.error) throw new Error(res.error);
 
+        console.log("res",res)
+        console.log("res.data",res.data)
+        console.log("res.data.results",res.data.results)
         var Data = await res.body.data.results;
 
-        Data.map(async(item, i) => {
+         await Data.map((item, i) => {
             setTimeout(async() => {
                 await Download(item.image, i)
                     .then((name) => {
