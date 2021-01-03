@@ -1,10 +1,27 @@
 var unirest = require("unirest");
 const { Post, Download } = require('./post');
 const dotenv = require('dotenv').config();
+const fetch = require('node-fetch');
+const axios = require("axios");
 
 const GetArticles = async(category, category_ID, tags, lang) => {
 
-    var req = unirest("GET", process.env.API_URL);
+    const options = {
+        method: 'GET',
+        url: 'https://webit-news-search.p.rapidapi.com/search',
+        params: {q: 'covid', language: 'en'},
+        headers: {
+          'x-rapidapi-key': 'e2f9a69211msh95b1ae66c96e79cp1d4592jsn8ed139e8dd4d',
+          'x-rapidapi-host': 'webit-news-search.p.rapidapi.com'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data.data.results);
+      }).catch(function (error) {
+          console.error(error);
+      });
+   /* var req = unirest("GET", process.env.API_URL);
 
     req.query({
         "q": category,
@@ -53,7 +70,7 @@ const GetArticles = async(category, category_ID, tags, lang) => {
             }
         }, 20000);
 
-    });
+    });*/
 
 }
 module.exports = { GetArticles }
