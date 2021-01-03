@@ -51,8 +51,6 @@ const DataArticle = (title, categories, tags, description, slug) => ({
 
 // all the job done by wpai in one single call function
 const AddallToWP = async(data, img_name) => {
-    console.log("Start")
-
     console.log('img_name ', img_name)
     var path_img = await Path.resolve(__dirname, "./images", img_name + `.jpg`)
     console.log('category', data.categories)
@@ -69,15 +67,16 @@ const AddallToWP = async(data, img_name) => {
             slug: "by " + data.slug
         }).then(async function(post) {
             // Create the media record & upload your image file
-            await WP.media().file(path_img).create({
+             await WP.media().file(path_img).create({
                 title: data.title,
                 post: post.id
             }).then(async function(media) {
-                console.log(media.id)
+                console.log("media",media.id)
+                console.log("post",post.id)
                     // Set the new media record as the post's featured media
-                await WP.posts().id(post.id).update({
+               await WP.posts().id(post.id).update({
                     featured_media: media.id,
-                    categories: data.categories
+                    categories: data.categories,
                 }).catch(err => console.log(err))
 
             }).catch(err => console.log(err))
@@ -88,7 +87,7 @@ const AddallToWP = async(data, img_name) => {
 }
 
 
-
+/*
 
 // to add a single image to wordpress
 async function AddImagetoWP(url, filename) {
@@ -131,7 +130,7 @@ const AddPostContent = async() => {
         }
     })
 }
-
+*/
 
 
 

@@ -28,7 +28,7 @@ Format_tags.forEach(element => {
 
 
 // start program
-cron.schedule('* 5 * * *', () => {
+ cron.schedule('* */2 * * *', () => {
     GetArticles(key, All_Categories, All_tags, lang);
 });
 

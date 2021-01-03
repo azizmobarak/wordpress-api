@@ -27,8 +27,8 @@ const GetArticles = async(category, category_ID, tags, lang) => {
             Data.map(async(item, i) => {
                 setTimeout(async() => {
                     await Download(item.image, i)
-                        .then(async(name) => {
-                            console.log("index of " + name)
+                        .then((name) => {
+                            console.log("index of " + name);
                         })
                 }, 2000);
             });
@@ -41,12 +41,12 @@ const GetArticles = async(category, category_ID, tags, lang) => {
 
         setTimeout(async() => {
             try {
-                await Data.forEach(async(element, index) => {
+                await Data.forEach((element, index) => {
                     var timeout = (parseInt(index) + 1) * 10000
                     console.log(timeout)
-                    setTimeout(async() => {
+                    setTimeout(() => {
                         var _tags = tags == [0] ? tags : [1, 2]
-                        await Post(element.title, category_ID, _tags, element.description, element.source_name, index)
+                         Post(element.title, category_ID, _tags, element.description, element.source_name, index)
 
                     }, timeout);
                 })
