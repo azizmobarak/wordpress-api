@@ -28,8 +28,8 @@ Format_tags.forEach(element => {
 
 
 // start program
- cron.schedule('* */2 * * *', () => {
+ //cron.schedule('* */2 * * *', () => {
     GetArticles(key, All_Categories, All_tags, lang);
-});
+//});
 
 app.listen(2020);

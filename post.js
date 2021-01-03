@@ -1,3 +1,6 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+
 const wpai = require('wpapi');
 const fs = require('fs');
 const fetch = require('node-fetch');
@@ -26,8 +29,10 @@ const Post = async(title, categories, tags, description, slug, img_name) => {
 
 //download image
 async function Download(img, name) {
+    const URI = img;
+    const encodedURI = encodeURI(URI);
     console.log("Downloading ... " + name)
-    const response = await fetch(img);
+    const response = await fetch(encodedURI);
     const buffer = await response.buffer();
     await fs.writeFile('./images/' + name + ".jpg", buffer, async(err, data) => {
         if (err) return -1;

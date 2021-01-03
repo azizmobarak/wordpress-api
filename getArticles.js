@@ -23,19 +23,14 @@ const GetArticles = async(category, category_ID, tags, lang) => {
 
         var Data = await res.body.data.results;
 
-        var TsakDownload = new Promise(async(reseolve, reject) => {
-            Data.map(async(item, i) => {
-                setTimeout(async() => {
-                    await Download(item.image, i)
-                        .then((name) => {
-                            console.log("index of " + name);
-                        })
-                }, 2000);
-            });
-        })
-
-        Promise.all([TsakDownload]).then(() => console.log('hello here'))
-            .catch(err => console.log(err));
+        Data.map(async(item, i) => {
+            setTimeout(async() => {
+                await Download(item.image, i)
+                    .then((name) => {
+                        console.log("index of " + name);
+                    })
+            }, 1000*i);
+        });
 
         //console.log('hello')
 
