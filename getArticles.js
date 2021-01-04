@@ -52,26 +52,5 @@ const GetArticles = async(category, category_ID, tags, lang) => {
       }).catch(function (error) {
           console.error(error);
       });
-   /* var req = unirest("GET", process.env.API_URL);
-
-    req.query({
-        "q": category,
-        "language": lang
-    });
-
-    req.headers({
-        "x-rapidapi-key": process.env.API_KEY,
-        "x-rapidapi-host": process.env.API_HOST,
-        "useQueryString": true
-    });
-
-
-    await req.end(async function(res) {
-        if (res.error) throw new Error(res.error);
-
-      
-
-    });*/
-
 }
 module.exports = { GetArticles }

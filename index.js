@@ -26,13 +26,20 @@ Format_tags.forEach(element => {
 });
 
 
+// categories formating
+var format_keys = key.split(',')
+var All_Keys = [];
+
+format_keys.forEach(element => {
+    All_Keys.push(element);
+});
+
 
 // start program
-var All_Keys=key;
 var count =0;
-console.log(key)
- cron.schedule('* */2 * * *', () => {
-    GetArticles(All_Keys[count], All_Categories, All_tags, lang);
+
+cron.schedule('* */1 * * *', () => {
+  GetArticles(All_Keys[count], All_Categories, All_tags, lang);
     count++;
     if(count==7){count = 0}
 });
