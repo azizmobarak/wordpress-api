@@ -20,8 +20,8 @@ const GetArticles = async(category, category_ID, tags, lang) => {
 
         // getting data
           var Data = await response.data.data.results;
-
-          // downloding images 
+          console.log(Data);
+         /* // downloding images 
           await Data.map((item, i) => {
              setTimeout(async() => {
                  await Download(item.image, i)
@@ -47,7 +47,7 @@ const GetArticles = async(category, category_ID, tags, lang) => {
              } catch (err) {
                  console.log(err);
              }
-         }, 20000);
+         }, 20000);*/
 
       }).catch(function (error) {
           console.error(error);
