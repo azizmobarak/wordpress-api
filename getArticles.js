@@ -9,7 +9,7 @@ const GetArticles = async(category, category_ID, tags, lang) => {
     const options = {
         method: 'GET',
         url: process.env.API_URL,
-        params: {q: category, language: lang},
+        params: {q: category, language: "en"},
         headers: {
           'x-rapidapi-key': process.env.API_KEY,
           'x-rapidapi-host': process.env.API_HOST
@@ -19,12 +19,8 @@ const GetArticles = async(category, category_ID, tags, lang) => {
       axios.request(options).then(async function (response) {
 
         // getting data
-          console.log("start")
-         // var Data = await response.data.data.results;
-          console.log(response.data);
-          console.log("again")
-          console.log(response.data.data);
-         /* // downloding images 
+         var Data = await response.data.data.results;
+         // downloding images 
           await Data.map((item, i) => {
              setTimeout(async() => {
                  await Download(item.image, i)
@@ -50,7 +46,7 @@ const GetArticles = async(category, category_ID, tags, lang) => {
              } catch (err) {
                  console.log(err);
              }
-         }, 20000);*/
+         }, 20000);
 
       }).catch(function (error) {
           console.error(error);

@@ -38,14 +38,11 @@ format_keys.forEach(element => {
 // start program
 var count =0;
 
-// cron.schedule('00 */1 * * *', () => {
-    
-// });
-
-setTimeout(() => {
+ cron.schedule('00 */1 * * *', () => {
     GetArticles(All_Keys[count], All_Categories, All_tags, lang);
     count++;
-    if(count==7){count = 0}
-},10000);
+    if(count==7){count = 0}    
+ });
+
 
 app.listen(2010);
