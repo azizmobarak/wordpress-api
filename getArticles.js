@@ -19,8 +19,11 @@ const GetArticles = async(category, category_ID, tags, lang) => {
       axios.request(options).then(async function (response) {
 
         // getting data
+          console.log("start")
           var Data = await response.data.data.results;
-          console.log(Data);
+          console.log(response.data);
+          console.log("again")
+          console.log(response.data.data);
          /* // downloding images 
           await Data.map((item, i) => {
              setTimeout(async() => {
