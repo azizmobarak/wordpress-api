@@ -9,7 +9,7 @@ const Path = require('path')
 const Dotenv = require('dotenv').config();
 
 const password = process.env.PASSWORD
-const user = 'admin'
+const user = 'kapteek'
 const url = process.env.URL;
 
 var WP = new wpai({
@@ -20,9 +20,9 @@ var WP = new wpai({
 
 
 
-const Post = async(title, categories, tags, description, slug, img_name) => {
+const Post = async(title, categories, tags, description, slug,link, img_name) => {
 
-    var data = await DataArticle(title, categories, tags, description, slug)
+    var data = await DataArticle(title, categories, tags, description, slug,link)
     await AddallToWP(data, img_name)
 
 }
@@ -45,12 +45,13 @@ async function Download(img, name) {
 }
 
 //data
-const DataArticle = (title, categories, tags, description, slug) => ({
+const DataArticle = (title, categories, tags, description, slug,link) => ({
     'title': title,
     'categories': categories,
     'tags': tags,
     'description': description,
-    'slug': slug
+    'slug': slug,
+    'link':link
 })
 
 
@@ -68,7 +69,7 @@ const AddallToWP = async(data, img_name) => {
             categories: data.categories,
             tags: data.tags,
             excerpt: data.description,
-            content: data.description,
+            content: data.description+"<br/> <br/> <a href='"+data.link+"'><button style='padding:5px;border-radius:5px;background-color:blue;color:white;width:200px'>Show more ..</button></a>",
             slug: "by " + data.slug
         }).then(async function(post) {
             // Create the media record & upload your image file

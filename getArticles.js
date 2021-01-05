@@ -39,7 +39,7 @@ const GetArticles = async(category, category_ID, tags, lang) => {
                      console.log(timeout)
                      setTimeout(() => {
                          var _tags = tags == [0] ? tags : [1, 2]
-                          Post(element.title, category_ID, _tags, element.description, element.source_name, index)
+                          Post(element.title, category_ID, _tags, element.description, element.source_name,element.url, index)
  
                      }, timeout);
                  })
