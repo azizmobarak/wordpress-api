@@ -9,7 +9,7 @@ const Path = require('path')
 const Dotenv = require('dotenv').config();
 
 const password = process.env.PASSWORD
-const user = 'kapteek'
+const user = 'admin'
 const url = process.env.URL;
 
 var WP = new wpai({

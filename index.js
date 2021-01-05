@@ -47,38 +47,38 @@ cron.schedule('00 */1 * * *', () => {
 });
 
 
-// technology
-var num = 0;
-var Technology_Keys = ['tech','technology','robot','bot','space','science']
-var Technology_categories =[2]
- cron.schedule('15 */1 * * *', () => {
-    GetArticles(Technology_Keys[num], Technology_categories, All_tags, lang);
-    num++;
-    if(num==5){num = 0}    
- });
+// // technology
+// var num = 0;
+// var Technology_Keys = ['tech','technology','robot','bot','space','science']
+// var Technology_categories =[2]
+//  cron.schedule('15 */1 * * *', () => {
+//     GetArticles(Technology_Keys[num], Technology_categories, All_tags, lang);
+//     num++;
+//     if(num==5){num = 0}    
+//  });
 
 
- // mobile
- var num2 = 0;
-var mobile_Keys = ['mobile','iphone','samsung','hwawi','intel','5G']
-var mobile_categories =[4]
- cron.schedule('30 */1 * * *', () => {
-    GetArticles(mobile_Keys[num2], mobile_categories, All_tags, lang);
-    num2++;
-    if(num2==5){num2 = 0}    
- });
+//  // mobile
+//  var num2 = 0;
+// var mobile_Keys = ['mobile','iphone','samsung','hwawi','intel','5G']
+// var mobile_categories =[4]
+//  cron.schedule('30 */1 * * *', () => {
+//     GetArticles(mobile_Keys[num2], mobile_categories, All_tags, lang);
+//     num2++;
+//     if(num2==5){num2 = 0}    
+//  });
 
  
 
- //media
- var num3 = 0;
- var media_Keys = ['media','news','trending','newspaper','fox','bbc','post','newyorktimes','washington post','cnbc','reuiters']
- var media_categories =[3]
-  cron.schedule('45 */1 * * *', () => {
-     GetArticles(media_Keys[num3],media_categories, All_tags, lang);
-     num3++;
-     if(num3==10){num3 = 0}    
-  });
+//  //media
+//  var num3 = 0;
+//  var media_Keys = ['media','news','trending','newspaper','fox','bbc','post','newyorktimes','washington post','cnbc','reuiters']
+//  var media_categories =[3]
+//   cron.schedule('45 */1 * * *', () => {
+//      GetArticles(media_Keys[num3],media_categories, All_tags, lang);
+//      num3++;
+//      if(num3==10){num3 = 0}    
+//   });
 
 
-app.listen(2030);
+app.listen(2010);
