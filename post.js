@@ -8,8 +8,8 @@ const axios = require('axios')
 const Path = require('path')
 const Dotenv = require('dotenv').config();
 
-const password = process.env.PASSWORD
-const user = 'admin'
+const password = process.env.PASSWORD;
+const user = process.env.USER_NAME;
 const url = process.env.URL;
 
 var WP = new wpai({
@@ -58,7 +58,6 @@ const DataArticle = (title, categories, tags, description, slug,link) => ({
 // all the job done by wpai in one single call function
 const AddallToWP = async(data, img_name) => {
     var path_img = await Path.resolve(__dirname, "./images", img_name + `.jpg`)
-    console.log(img_name)
 
     try {
         await WP.posts().create({
@@ -76,8 +75,6 @@ const AddallToWP = async(data, img_name) => {
                 title: data.title,
                 post: post.id
             }).then(async function(media) {
-                console.log("media",media.id)
-                console.log("post",post.id)
                     // Set the new media record as the post's featured media
                await WP.posts().id(post.id).update({
                     featured_media: media.id,
