@@ -57,9 +57,8 @@ const DataArticle = (title, categories, tags, description, slug,link) => ({
 
 // all the job done by wpai in one single call function
 const AddallToWP = async(data, img_name) => {
-    console.log('img_name ', img_name)
     var path_img = await Path.resolve(__dirname, "./images", img_name + `.jpg`)
-    console.log('category', data.categories)
+    console.log(img_name)
 
     try {
         await WP.posts().create({
