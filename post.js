@@ -67,8 +67,9 @@ const AddallToWP = async(data, img_name) => {
             categories: data.categories,
             tags: data.tags,
             excerpt: data.description,
-            content: data.description+"<br/> <br/> <a href='"+data.link+"'><button style='padding:5px;border-radius:5px;background-color:blue;color:white;width:200px'>Show more ..</button></a>",
-            slug: "by " + data.slug
+            content: data.description+"<br/> <br/> <h4>by <strong style='color:red;'> "+data.slug+"</strong></h4> <br/> <br/> <a href='"+data.link+"'><button style='padding:5px;border-radius:5px;background-color:blue;color:white;width:200px'>Show more ..</button></a>",
+            slug: data.title,
+            meta : [data.title,data.content]
         }).then(async function(post) {
             // Create the media record & upload your image file
              await WP.media().file(path_img).create({

@@ -42,7 +42,7 @@ format_keys.forEach(element => {
 var count =0;
 
 cron.schedule('00 */1 * * *', () => {
-    GetArticles(All_Keys[count], All_Categories, All_tags, lang);
+     GetArticles(All_Keys[count], All_Categories, All_tags, lang);
    count++;
     if(count==All_Keys.length){count = 0}    
 });
