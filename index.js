@@ -4,82 +4,113 @@ const app = express();
 const Dotenv = require('dotenv').config();
 const cron = require('node-cron');
 
-var categories = process.env.CAT;
+var cat1 = [parseInt(process.env.CAT1)];
+var cat2 = [parseInt(process.env.CAT2)];
+var cat3 = [parseInt(process.env.CAT3)];
+var cat4 = [parseInt(process.env.CAT4)];
+var cat5 = [parseInt(process.env.CAT5)];
+var cat6 = [parseInt(process.env.CAT6)];
+var cat7 = [parseInt(process.env.CAT7)];
+
 var tags = process.env.TAGS
 var lang = process.env.LANG.toString().substring(0, 2)
-var key = process.env.KEY;
 
-// categories formating
-var Format_Categories = categories.split(',')
-var All_Categories = [];
+var keys1 = process.env.KEY1;
+var keys2 = process.env.KEY2;
+var keys3 = process.env.KEY3;
+var keys4 = process.env.KEY4;
+var keys5 = process.env.KEY5;
+var keys6 = process.env.KEY6;
+var keys7 = process.env.KEY7;
 
-Format_Categories.forEach(element => {
-    All_Categories.push(parseInt(element));
-});
 
-//tags formating
-var Format_tags = tags.split(',')
-var All_tags = [];
+// format keywords
 
+function FormatKeys(keys1){
+ var KEYS = [];
+ var Format_tags = keys1.split(',')
 Format_tags.forEach(element => {
-    All_tags.push(parseInt(element));
+    KEYS.push(element);
 });
+return KEYS;
+}
 
 
-// categories formating
-var format_keys = key.split(',')
-var All_Keys = [];
-
-format_keys.forEach(element => {
-    All_Keys.push(element);
-});
+var All_Keys1 = FormatKeys(keys1);
+var All_Keys2 = FormatKeys(keys2);
+var All_Keys3 = FormatKeys(keys3);
+var All_Keys4 = FormatKeys(keys4);
+var All_Keys5 = FormatKeys(keys5);
+var All_Keys6 = FormatKeys(keys6);
+var All_Keys7 = FormatKeys(keys7);
 
 
 // start program
 
-//business
 
+
+//Economy
 var count =0;
-
-cron.schedule('00 */1 * * *', () => {
-     GetArticles(All_Keys[count], All_Categories, All_tags, lang);
+cron.schedule('00 */2 * * *', () => {
+    All_Keys = FormatKeys(keys1)
+     GetArticles(All_Keys1[count],cat1, [1,2], lang);
    count++;
-    if(count==All_Keys.length){count = 0}    
+    if(count==All_Keys1.length){count = 0}    
 });
 
         
-// technology
+// market data
 var num = 0;
-var Technology_Keys = ['tech','technology','robot','bot','space','science','tesla','nasa','teach','future','feature','digital','science','programing','script','elon mask','microsoft','computer','system']
-var Technology_categories =[2]
- cron.schedule('15 */1 * * *', () => {
-    GetArticles(Technology_Keys[num], Technology_categories, All_tags, lang);
+ cron.schedule('5 */2 * * *', () => {
+    GetArticles(All_Keys2[num], cat2,  [1,2], lang);
     num++;
-    if(num==Technology_Keys.length){num = 0}    
+    if(num==All_Keys2.length){num = 0}    
  });
 
 
- // mobile
+ // teach economy
  var num2 = 0;
-var mobile_Keys = ['mobile','iphone','samsung','hwawi','intel','5G','apple','nokia','phone','smart phone','android','ios','apps','mobile games','play store','app store','tablet']
-var mobile_categories =[4]
- cron.schedule('30 */1 * * *', () => {
-    GetArticles(mobile_Keys[num2], mobile_categories, All_tags, lang);
+ cron.schedule('10 */2 * * *', () => {
+    GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
     num2++;
-    if(num2==mobile_Keys.length){num2 = 0}    
+    if(num2==All_Keys3.length){num2 = 0}    
  });
 
  
 
- //media
+ //entreprenur ship
  var num3 = 0;
- var media_Keys = ['media','news','trending','newspaper','fox','bbc','post','newyorktimes','washington post','cnbc','reuiters','breaking news','fox news','mbc','aljazeera','world news']
- var media_categories =[3]
-  cron.schedule('45 */1 * * *', () => {
-     GetArticles(media_Keys[num3],media_categories, All_tags, lang);
+  cron.schedule('15 */2 * * *', () => {
+     GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
      num3++;
-     if(num3==media_Keys.length){num3 = 0}    
+     if(num3==All_Keys4.length){num3 = 0}    
   });
+
+
+//companies
+var num4 = 0;
+cron.schedule('20 */2 * * *', () => {
+     GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
+     num4++;
+     if(num4==All_Keys5.length){num4 = 0}    
+});
+
+
+//car industry
+var num5 = 0;
+cron.schedule('25 */2 * * *', () => {
+     GetArticles(All_Keys6[num5],cat6,  [1,2], lang);
+     num5++;
+     if(num5==All_Keys6.length){num5 = 0}    
+});
+
+//business of sport
+var num6 = 0;
+cron.schedule('30 */2 * * *', () => {
+     GetArticles(All_Keys7[num6],cat7,  [1,2], lang);
+     num6++;
+     if(num6==All_Keys7.length){num6 = 0}    
+});
 
 
 app.listen(2010);
