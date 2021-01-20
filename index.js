@@ -22,20 +22,22 @@ var keys4 = process.env.KEY4;
 var keys5 = process.env.KEY5;
 var keys6 = process.env.KEY6;
 var keys7 = process.env.KEY7;
+var keys8 = process.env.KEY8;
+var keys9 = process.env.KEY9;
 
 
 // format keywords
 
-function FormatKeys(keys1){
- var KEYS = [];
- var Format_tags = keys1.split(',')
+function FormatKeys(keys){
+ var arr_KEYS = [];
+ var Format_tags = keys.split(',')
 Format_tags.forEach(element => {
-    KEYS.push(element);
+   arr_KEYS.push(element);
 });
-return KEYS;
+return arr_KEYS;
 }
 
-
+// get formated keys
 var All_Keys1 = FormatKeys(keys1);
 var All_Keys2 = FormatKeys(keys2);
 var All_Keys3 = FormatKeys(keys3);
@@ -43,34 +45,36 @@ var All_Keys4 = FormatKeys(keys4);
 var All_Keys5 = FormatKeys(keys5);
 var All_Keys6 = FormatKeys(keys6);
 var All_Keys7 = FormatKeys(keys7);
+var All_Keys8 = FormatKeys(keys8);
+var All_Keys9 = FormatKeys(keys9);
 
 
 // start program
 
+         
 
-
-//Economy
-var count =0;
-cron.schedule('00 */2 * * *', () => {
+// cat 1
+ var count =0;
+cron.schedule('00 */8 * * *', () => {
     All_Keys = FormatKeys(keys1)
-     GetArticles(All_Keys1[count],cat1, [1,2], lang);
+ GetArticles(All_Keys1[count],cat1, [1,2], lang);
    count++;
     if(count==All_Keys1.length){count = 0}    
 });
 
         
-// market data
+// cat 2
 var num = 0;
- cron.schedule('5 */2 * * *', () => {
+ cron.schedule('5 */4 * * *', () => {
     GetArticles(All_Keys2[num], cat2,  [1,2], lang);
     num++;
     if(num==All_Keys2.length){num = 0}    
  });
 
 
- // teach economy
+ // cat 3
  var num2 = 0;
- cron.schedule('10 */2 * * *', () => {
+ cron.schedule('10 */3 * * *', () => {
     GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
     num2++;
     if(num2==All_Keys3.length){num2 = 0}    
@@ -78,39 +82,59 @@ var num = 0;
 
  
 
- //entreprenur ship
+ // cat 4
  var num3 = 0;
-  cron.schedule('15 */2 * * *', () => {
+  cron.schedule('15 */4 * * *', () => {
      GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
      num3++;
      if(num3==All_Keys4.length){num3 = 0}    
   });
 
 
-//companies
+// cat 5
 var num4 = 0;
-cron.schedule('20 */2 * * *', () => {
+cron.schedule('20 */3 * * *', () => {
      GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
      num4++;
      if(num4==All_Keys5.length){num4 = 0}    
 });
 
 
-//car industry
+// cat 6
 var num5 = 0;
-cron.schedule('25 */2 * * *', () => {
+cron.schedule('25 */3 * * *', () => {
      GetArticles(All_Keys6[num5],cat6,  [1,2], lang);
      num5++;
      if(num5==All_Keys6.length){num5 = 0}    
 });
 
-//business of sport
+
+// cat 7
 var num6 = 0;
-cron.schedule('30 */2 * * *', () => {
-     GetArticles(All_Keys7[num6],cat7,  [1,2], lang);
+cron.schedule('30 */6 * * *', () => {
+     GetArticles(All_Keys7[num6],cat7,[1,2], lang);
      num6++;
      if(num6==All_Keys7.length){num6 = 0}    
 });
+
+
+// cat 8
+var num7 = 0;
+cron.schedule('35 */6 * * *', () => {
+     GetArticles(All_Keys8[num7],cat8,[1,2], lang);
+     num7++;
+     if(num7==All_Keys7.length){num7 = 0}    
+});
+
+
+// cat 9
+var num8 = 0;
+cron.schedule('40 */4 * * *', () => {
+     GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
+     num8++;
+     if(num8==All_Keys7.length){num8 = 0}    
+});
+
 
 
 app.listen(2010);
