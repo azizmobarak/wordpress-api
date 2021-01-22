@@ -24,6 +24,9 @@ var keys6 = process.env.KEY6;
 var keys7 = process.env.KEY7;
 var keys8 = process.env.KEY8;
 var keys9 = process.env.KEY9;
+var keys10 = process.env.KEY10;
+var keys11 = process.env.KEY11;
+var keys12 = process.env.KEY12;
 
 
 // format keywords
@@ -47,6 +50,9 @@ var All_Keys6 = FormatKeys(keys6);
 var All_Keys7 = FormatKeys(keys7);
 var All_Keys8 = FormatKeys(keys8);
 var All_Keys9 = FormatKeys(keys9);
+var All_Keys10 = FormatKeys(keys10);
+var All_Keys11 = FormatKeys(keys11);
+var All_Keys12 = FormatKeys(keys12);
 
 
 // start program
@@ -123,7 +129,7 @@ var num7 = 0;
 cron.schedule('35 */6 * * *', () => {
      GetArticles(All_Keys8[num7],cat8,[1,2], lang);
      num7++;
-     if(num7==All_Keys7.length){num7 = 0}    
+     if(num7==All_Keys8.length){num7 = 0}    
 });
 
 
@@ -132,9 +138,34 @@ var num8 = 0;
 cron.schedule('40 */4 * * *', () => {
      GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
      num8++;
-     if(num8==All_Keys7.length){num8 = 0}    
+     if(num8==All_Keys9.length){num8 = 0}    
 });
 
+
+// cat 10
+var num9 = 0;
+cron.schedule('45 */4 * * *', () => {
+     GetArticles(All_Keys10[num9],cat10,  [1,2], lang);
+     num9++;
+     if(num9==All_Keys10.length){num9 = 0}    
+});
+
+
+// cat 11
+var num10 = 0;
+cron.schedule('50 */4 * * *', () => {
+     GetArticles(All_Keys11[num10],cat11,  [1,2], lang);
+     num10++;
+     if(num10==All_Keys11.length){num10 = 0}    
+});
+
+// cat 12
+var num11 = 0;
+cron.schedule('55 */4 * * *', () => {
+     GetArticles(All_Keys12[num11],cat12,  [1,2], lang);
+     num11++;
+     if(num11==All_Keys12.length){num11 = 0}    
+});
 
 
 app.listen(2050);
