@@ -1,8 +1,18 @@
 const express = require('express');
-const { GetArticles } = require('./getArticles');
 const app = express();
 const Dotenv = require('dotenv').config();
 const cron = require('node-cron');
+const mongoose = require('mongoose');
+const {GetArticles} = require('./getArticles');
+const Article = require('./articles');
+const moment = require('moment');
+
+mongoose.connect(process.env.DATABASE,{ useNewUrlParser: true , useUnifiedTopology: true },(err)=>{
+if(err) console.log(err);
+else{
+    console.log('new code')
+}
+});
 
 var cat1 = [parseInt(process.env.CAT1)];
 var cat2 = [parseInt(process.env.CAT2)];
@@ -83,9 +93,11 @@ var All_Keys7 = FormatKeys(keys7);
 // var All_Keys18 = FormatKeys(keys18);
 // var All_Keys19 = FormatKeys(keys19);
 // var All_Keys20 = FormatKeys(keys20);
-}catch(err){
-     console.log(err);
-}
+// }catch(err){
+//      console.log(err);
+ }catch(err){
+      console.log(err)
+ }
 
 
 // start program
@@ -95,7 +107,7 @@ var All_Keys7 = FormatKeys(keys7);
 // cat 1
   var count =0;
  cron.schedule('00 8 */1 * *', () => {
-  GetArticles(All_Keys1[count],cat1, [1,2], lang);
+ GetArticles(All_Keys1[count],cat1, [1,2], lang);
     count++;
     if(count==All_Keys1.length){count = 0}    
 });
@@ -104,13 +116,13 @@ var All_Keys7 = FormatKeys(keys7);
 // cat 2
 var num = 0;
  cron.schedule('05 9 */1 * *', () => {
-    GetArticles(All_Keys2[num], cat2,  [1,2], lang);
+  GetArticles(All_Keys2[num], cat2,  [1,2], lang);
     num++;
     if(num==All_Keys2.length){num = 0}    
  });
 
 
- // cat 3
+//  cat 3
   var num2 = 0;
  cron.schedule('05 10 */1 * *', () => {
    GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
@@ -120,7 +132,7 @@ var num = 0;
 
  
 
- // cat 4
+//  cat 4
  var num3 = 0;
   cron.schedule('15 11 */1 * *', () => {
  GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
@@ -130,7 +142,7 @@ var num = 0;
 
 
 // cat 5
-    var num4 = 0;
+     var num4 = 0;
 cron.schedule('20 12 */1 * *', () => {
     GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
      num4++;

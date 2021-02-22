@@ -57,19 +57,23 @@ const DataArticle = (title, categories, tags, description, slug,link) => ({
 
 // all the job done by wpai in one single call function
 const AddallToWP = async(data, img_name) => {
-    var path_img = await Path.resolve(__dirname, "./images", img_name + `.jpg`)
+    
+    try{
+        var path_img = await Path.resolve(__dirname, "./images", img_name + `.jpg`)
+    }catch{
+        var path_img = await Path.resolve(__dirname, "./images","news"+`.png`)
+    }
 
     try {
         await WP.posts().create({
             title: data.title,
-            content: data.content,
             status: 'publish',
             categories: data.categories,
             tags: data.tags,
-            excerpt: data.description,
+            excerpt: data.description.substring(0,400),
             content: data.description+"<br/> <br/> <h4>by <strong style='color:red;'> "+data.slug+"</strong></h4> <br/> <br/> <a href='"+data.link+"'><button style='padding:5px;border-radius:5px;background-color:blue;color:white;width:200px'>Show more ..</button></a>",
             slug: data.title,
-            meta : [data.title,data.content]
+            meta : [data.title,data.description.substring(0,255)]
         }).then(async function(post) {
             // Create the media record & upload your image file
              await WP.media().file(path_img).create({
