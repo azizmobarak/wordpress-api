@@ -19,11 +19,11 @@ var cat4 = [parseInt(process.env.CAT4)];
 var cat5 = [parseInt(process.env.CAT5)];
 var cat6 = [parseInt(process.env.CAT6)];
 var cat7 = [parseInt(process.env.CAT7)];
-// var cat8 = [parseInt(process.env.CAT8)];
-// var cat9 = [parseInt(process.env.CAT9)];
-// var cat10 = [parseInt(process.env.CAT10)];
-// var cat11 = [parseInt(process.env.CAT11)];
-// var cat12 = [parseInt(process.env.CAT12)];
+var cat8 = [parseInt(process.env.CAT8)];
+var cat9 = [parseInt(process.env.CAT9)];
+var cat10 = [parseInt(process.env.CAT10)];
+var cat11 = [parseInt(process.env.CAT11)];
+var cat12 = [parseInt(process.env.CAT12)];
 // var cat13 = [parseInt(process.env.CAT13)];
 // var cat14 = [parseInt(process.env.CAT14)];
 // var cat15 = [parseInt(process.env.CAT15)];
@@ -43,11 +43,11 @@ var keys4 = process.env.KEY4;
 var keys5 = process.env.KEY5;
 var keys6 = process.env.KEY6;
 var keys7 = process.env.KEY7;
-// var keys8 = process.env.KEY8;
-// var keys9 = process.env.KEY9;
-// var keys10 = process.env.KEY10;
-// var keys11 = process.env.KEY11;
-// var keys12 = process.env.KEY12;
+var keys8 = process.env.KEY8;
+var keys9 = process.env.KEY9;
+var keys10 = process.env.KEY10;
+var keys11 = process.env.KEY11;
+var keys12 = process.env.KEY12;
 // var keys13 = process.env.KEY13;
 // var keys14 = process.env.KEY14;
 // var keys15 = process.env.KEY15;
@@ -78,11 +78,11 @@ var All_Keys4 = FormatKeys(keys4);
 var All_Keys5 = FormatKeys(keys5);
 var All_Keys6 = FormatKeys(keys6);
 var All_Keys7 = FormatKeys(keys7);
-// var All_Keys8 = FormatKeys(keys8);
-// var All_Keys9 = FormatKeys(keys9);
-// var All_Keys10 = FormatKeys(keys10);
-// var All_Keys11 = FormatKeys(keys11);
-// var All_Keys12 = FormatKeys(keys12);
+var All_Keys8 = FormatKeys(keys8);
+var All_Keys9 = FormatKeys(keys9);
+var All_Keys10 = FormatKeys(keys10);
+var All_Keys11 = FormatKeys(keys11);
+var All_Keys12 = FormatKeys(keys12);
 // var All_Keys13 = FormatKeys(keys13);
 // var All_Keys14 = FormatKeys(keys14);
 // var All_Keys15 = FormatKeys(keys15);
@@ -121,7 +121,7 @@ var num = 0;
  //cat 3
   var num2 = 0;
  cron.schedule('05 10 */1 * *', () => {
-   GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
+    GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
      num2++;
     if(num2==All_Keys3.length){num2 = 0}    
  });
@@ -164,48 +164,48 @@ cron.schedule('30 14 */1 * *', () => {
 });
 
 
-// // cat 8
-//  var num7 = 0;
-// cron.schedule('35 15 */2 * *', () => {
-//      GetArticles(All_Keys8[num7],cat8,[1,2], lang);
-//      num7++;
-//      if(num7==All_Keys8.length){num7 = 0}    
-// });
+// cat 8
+ var num7 = 0;
+cron.schedule('35 15 */2 * *', () => {
+     GetArticles(All_Keys8[num7],cat8,[1,2], lang);
+     num7++;
+     if(num7==All_Keys8.length){num7 = 0}    
+});
 
 
-// // cat 9
-//  var num8 = 0;
-// cron.schedule('40 16 */2 * *', () => {
-//      GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
-//      num8++;
-//      if(num8==All_Keys9.length){num8 = 0}    
-// });
+// cat 9
+ var num8 = 0;
+cron.schedule('40 16 */2 * *', () => {
+     GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
+     num8++;
+     if(num8==All_Keys9.length){num8 = 0}    
+});
 
 
-// // cat 10
-//  var num9 = 0;
-// cron.schedule('45 17 */2 * *', () => {
-//    GetArticles(All_Keys10[num9],cat10,  [1,2], lang);
-//      num9++;
-//      if(num9==All_Keys10.length){num9 = 0}    
-// });
+// cat 10
+ var num9 = 0;
+cron.schedule('45 17 */2 * *', () => {
+   GetArticles(All_Keys10[num9],cat10,  [1,2], lang);
+     num9++;
+     if(num9==All_Keys10.length){num9 = 0}    
+});
 
 
-// // cat 11
-//  var num10 = 0;
-// cron.schedule('50 18 */2 * *', () => {
-//      GetArticles(All_Keys11[num10],cat11,  [1,2], lang);
-//      num10++;
-//      if(num10==All_Keys11.length){num10 = 0}    
-// });
+// cat 11
+ var num10 = 0;
+cron.schedule('50 18 */2 * *', () => {
+     GetArticles(All_Keys11[num10],cat11,  [1,2], lang);
+     num10++;
+     if(num10==All_Keys11.length){num10 = 0}    
+});
 
-// // cat 12
-//        var num11 = 0;
-// cron.schedule('55 19 */2 * *', () => {
-//         GetArticles(All_Keys12[num11],cat12,  [1,2], lang);
-//      num11++;
-//      if(num11==All_Keys12.length){num11 = 0}    
-// });
+// cat 12
+       var num11 = 0;
+cron.schedule('55 19 */2 * *', () => {
+        GetArticles(All_Keys12[num11],cat12,  [1,2], lang);
+     num11++;
+     if(num11==All_Keys12.length){num11 = 0}    
+});
 
 
 // // cat 13
@@ -280,4 +280,4 @@ cron.schedule('30 14 */1 * *', () => {
 // });
 
 
-app.listen(2020);
+app.listen(2030);

@@ -10,7 +10,7 @@ var date = moment().subtract(1,'day').toDate();
 var article = Articles();
        article.find(
           {$and :
-            [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
+            [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex':category} }]},
               {articleCreatedDate : {$gte:date}}
             ]}
            ,async(err,doc)=>{
