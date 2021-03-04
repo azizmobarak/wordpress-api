@@ -22,7 +22,6 @@ var article = Articles();
          // downloding images 
         await Data.map((item, i) => {
           try{
-            console.log("show",item.articleImageURL)
             var url ="";
 
             if(item.articleImageURL==="" || item.articleImageURL==null || typeof(item.articleImageURL)==="undefined"){
@@ -41,6 +40,7 @@ var article = Articles();
                     }          
                 }
             }
+            console.log("show",item.articleImageURL)
              setTimeout(async() => {
                 try{
                 await Download(url, i)
@@ -48,7 +48,11 @@ var article = Articles();
                         console.log("index of " + name);
                     })
                 }catch(e){
-                  console.log('error here 1 ',e)
+                    url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
+                    await Download(url, i)
+                    .then((name) => {
+                        console.log("index of " + name);
+                    })
                 }
              }, 1000*i);
           }catch{
