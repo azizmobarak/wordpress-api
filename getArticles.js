@@ -4,13 +4,13 @@ const dotenv = require('dotenv').config();
 const Articles = require('./articles');
 const moment = require('moment');
 
-const GetArticles = async(category, category_ID, tags, lang) => {
-
+const GetArticles = async(category, category_ID, tags) => {
+console.log(category)
 var date = moment().subtract(1,'day').toDate();
 var article = Articles();
        article.find(
           {$and :
-            [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex':category} }]},
+            [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
               {articleCreatedDate : {$gte:date}}
             ]}
            ,async(err,doc)=>{
@@ -19,10 +19,10 @@ var article = Articles();
               
          // getting data
          var Data = doc;
+         console.log(doc.length)
          // downloding images 
         await Data.map((item, i) => {
           try{
-            console.log("show",item.articleImageURL)
             var url ="";
 
             if(item.articleImageURL==="" || item.articleImageURL==null || typeof(item.articleImageURL)==="undefined"){
@@ -41,6 +41,7 @@ var article = Articles();
                     }          
                 }
             }
+            console.log("show",item.articleImageURL)
              setTimeout(async() => {
                 try{
                 await Download(url, i)
@@ -48,6 +49,11 @@ var article = Articles();
                         console.log("index of " + name);
                     })
                 }catch(e){
+                    url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
+                    await Download(url, i)
+                    .then((name) => {
+                        console.log("index of " + name);
+                    })
                   console.log('error here 1 ',e)
                 }
              }, 1000*i);
