@@ -102,11 +102,11 @@ var All_Keys7 = FormatKeys(keys7);
 
 // cat 1
  var count =0;
-//cron.schedule('59 */23 * * *', () => {
+cron.schedule('59 */23 * * *', () => {
  GetArticles(All_Keys1[count],cat1, [1,2], lang);
-   // count++;
-   // if(count==All_Keys1.length){count = 0}    
-//});
+    count++;
+   if(count==All_Keys1.length){count = 0}    
+});
 
         
 //cat 2
