@@ -5,7 +5,7 @@ const Articles = require('./articles');
 const moment = require('moment');
 
 const GetArticles = async(category, category_ID, tags, lang) => {
-
+console.log(category)
 var date = moment().subtract(1,'day').toDate();
 var article = Articles();
        article.find(
@@ -19,6 +19,7 @@ var article = Articles();
               
          // getting data
          var Data = doc;
+         console.log(doc.length)
          // downloding images 
         await Data.map((item, i) => {
           try{
@@ -48,7 +49,11 @@ var article = Articles();
                         console.log("index of " + name);
                     })
                 }catch(e){
-                  console.log('error here 1 ',e)
+                    url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
+                    await Download(url, i)
+                    .then((name) => {
+                        console.log("index of " + name);
+                    })
                 }
              }, 1000*i);
           }catch{
