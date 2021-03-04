@@ -4,7 +4,6 @@ const Dotenv = require('dotenv').config();
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const {GetArticles} = require('./getArticles');
-const Articles = require('./articles');
 
 mongoose.connect(process.env.DATABASE,{ useNewUrlParser: true , useUnifiedTopology: true },(err)=>{
 if(err) console.log(err);
@@ -101,112 +100,112 @@ var All_Keys12 = FormatKeys(keys12);
 
          
 
-// // cat 1
+// cat 1
   var count =4;
-// cron.schedule('00 8 */1 * *', () => {
+cron.schedule('59 */23 * * *', () => {
  GetArticles(All_Keys1[count],cat1, [1,2]);
-//     count++;
-//     if(count==All_Keys1.length){count = 0}    
-// });
+    count++;
+    if(count==All_Keys1.length){count = 0}    
+});
 
         
-// //cat 2
-// var num = 0;
-//  cron.schedule('05 9 */1 * *', () => {
-//   GetArticles(All_Keys2[num], cat2,  [1,2], lang);
-//     num++;
-//     if(num==All_Keys2.length){num = 0}    
-//  });
+//cat 2
+var num = 0;
+ cron.schedule('59 */23 * * *', () => {
+  GetArticles(All_Keys2[num], cat2,  [1,2], lang);
+    num++;
+    if(num==All_Keys2.length){num = 0}    
+ });
 
 
-//  //cat 3
-//   var num2 = 0;
-//  cron.schedule('05 10 */1 * *', () => {
-//     GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
-//      num2++;
-//     if(num2==All_Keys3.length){num2 = 0}    
-//  });
+ //cat 3
+  var num2 = 0;
+ cron.schedule('59 */23 * * *', () => {
+    GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
+     num2++;
+    if(num2==All_Keys3.length){num2 = 0}    
+ });
 
  
 
-//  //cat 4
-//  var num3 = 0;
-//   cron.schedule('15 11 */1 * *', () => {
-//  GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
-//      num3++;
-//      if(num3==All_Keys4.length){num3 = 0}    
-//   });
+ //cat 4
+ var num3 = 0;
+  cron.schedule('59 */23 * * *', () => {
+ GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
+     num3++;
+     if(num3==All_Keys4.length){num3 = 0}    
+  });
 
 
-// //cat 5
-//      var num4 = 0;
-// cron.schedule('20 12 */1 * *', () => {
-//     GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
-//      num4++;
-//      if(num4==All_Keys5.length){num4 = 0}    
-// });
+//cat 5
+     var num4 = 0;
+cron.schedule('59 */23 * * *', () => {
+    GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
+     num4++;
+     if(num4==All_Keys5.length){num4 = 0}    
+});
 
 
-// //cat 6
-// var num5 = 0;
-// cron.schedule('25 13 */1 * *', () => {
-//      GetArticles(All_Keys6[num5],cat6,  [1,2], lang);
-//      num5++;
-//      if(num5==All_Keys6.length){num5 = 0}    
-// });
+//cat 6
+var num5 = 0;
+cron.schedule('59 */23 * * *', () => {
+     GetArticles(All_Keys6[num5],cat6,  [1,2], lang);
+     num5++;
+     if(num5==All_Keys6.length){num5 = 0}    
+});
 
 
-// //cat 7
-// var num6 = 0;
-// cron.schedule('30 14 */1 * *', () => {
-//      GetArticles(All_Keys7[num6],cat7,[1,2], lang);
-//      num6++;
-//      if(num6==All_Keys7.length){num6 = 0}    
-// });
+//cat 7
+var num6 = 0;
+cron.schedule('59 */23 * * *', () => {
+     GetArticles(All_Keys7[num6],cat7,[1,2], lang);
+     num6++;
+     if(num6==All_Keys7.length){num6 = 0}    
+});
 
 
-// // cat 8
-//  var num7 = 0;
-// cron.schedule('35 15 */2 * *', () => {
-//      GetArticles(All_Keys8[num7],cat8,[1,2], lang);
-//      num7++;
-//      if(num7==All_Keys8.length){num7 = 0}    
-// });
+// cat 8
+ var num7 = 0;
+cron.schedule('59 */23 * * *', () => {
+     GetArticles(All_Keys8[num7],cat8,[1,2], lang);
+     num7++;
+     if(num7==All_Keys8.length){num7 = 0}    
+});
 
 
-// // cat 9
-//  var num8 = 0;
-// cron.schedule('40 16 */2 * *', () => {
-//      GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
-//      num8++;
-//      if(num8==All_Keys9.length){num8 = 0}    
-// });
+// cat 9
+ var num8 = 0;
+cron.schedule('59 */23 * * *', () => {
+     GetArticles(All_Keys9[num8],cat9,  [1,2], lang);
+     num8++;
+     if(num8==All_Keys9.length){num8 = 0}    
+});
 
 
-// // cat 10
-//  var num9 = 0;
-// cron.schedule('45 17 */2 * *', () => {
-//    GetArticles(All_Keys10[num9],cat10,  [1,2], lang);
-//      num9++;
-//      if(num9==All_Keys10.length){num9 = 0}    
-// });
+// cat 10
+ var num9 = 0;
+cron.schedule('59 */23 * * *', () => {
+   GetArticles(All_Keys10[num9],cat10,  [1,2], lang);
+     num9++;
+     if(num9==All_Keys10.length){num9 = 0}    
+});
 
 
-// // cat 11
-//  var num10 = 0;
-// cron.schedule('50 18 */2 * *', () => {
-//      GetArticles(All_Keys11[num10],cat11,  [1,2], lang);
-//      num10++;
-//      if(num10==All_Keys11.length){num10 = 0}    
-// });
+// cat 11
+ var num10 = 0;
+cron.schedule('59 */23 * * *', () => {
+     GetArticles(All_Keys11[num10],cat11,  [1,2], lang);
+     num10++;
+     if(num10==All_Keys11.length){num10 = 0}    
+});
 
-// // cat 12
-//        var num11 = 0;
-// cron.schedule('55 19 */2 * *', () => {
-//         GetArticles(All_Keys12[num11],cat12,  [1,2], lang);
-//      num11++;
-//      if(num11==All_Keys12.length){num11 = 0}    
-// });
+// cat 12
+       var num11 = 0;
+cron.schedule('59 */23 * * *', () => {
+        GetArticles(All_Keys12[num11],cat12,  [1,2], lang);
+     num11++;
+     if(num11==All_Keys12.length){num11 = 0}    
+});
 
 
 // // cat 13
