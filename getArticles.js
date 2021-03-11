@@ -11,7 +11,7 @@ var article = Articles();
        article.find(
           {$and :
             [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
-              {articleCreatedDate : {$gte:date}},{articleLanguage:"en"}
+              {articleCreatedDate : {$gte:date}},{articleLanguage:"en"},{articleSourceLink:{$ne:null}}
             ]}
            ,async(err,doc)=>{
          if(err) console.log(err);
@@ -23,7 +23,8 @@ var article = Articles();
         await Data.map((item, i) => {
           try{
             console.log("show",item.articleImageURL)
-            var url ="";
+            var url =item.articleImageURL;
+           var other_url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
 
             if(item.articleImageURL==="" || item.articleImageURL==null || typeof(item.articleImageURL)==="undefined"){
                 url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
@@ -42,6 +43,7 @@ var article = Articles();
                 }
             }
              setTimeout(async() => {
+                 console.log(url)
                 try{
                 await Download(url, i)
                     .then((name) => {
@@ -49,6 +51,10 @@ var article = Articles();
                     })
                 }catch(e){
                   console.log('error here 1 ',e)
+                  await Download(other_url, i)
+                    .then((name) => {
+                        console.log("index of " + name);
+                    })
                 }
              }, 1000*i);
           }catch{
