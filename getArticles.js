@@ -11,7 +11,7 @@ var article = Articles();
        article.find(
           {$and :
             [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
-              {articleCreatedDate : {$gte:date}}
+              {articleCreatedDate : {$gte:date}},{articleLanguage:"en"}
             ]}
            ,async(err,doc)=>{
          if(err) console.log(err);
