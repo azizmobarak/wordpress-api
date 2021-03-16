@@ -4,14 +4,18 @@ const dotenv = require('dotenv').config();
 const Articles = require('./articles');
 const moment = require('moment');
 
-const GetArticles = async(category, category_ID, tags, lang) => {
+const GetArticles = async(category,ID) => {
 
 var date = moment().subtract(1,'day').toDate();
+var lang = process.env.LANG.substring(0,2);
+
+console.log(lang)
+
 var article = Articles();
        article.find(
           {$and :
             [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
-              {articleCreatedDate : {$gte:date}},{articleLanguage:"en"},{articleSourceLink:{$ne:null}}
+              {articleCreatedDate : {$gte:date}},{articleLanguage:lang},{articleSourceLink:{$ne:null}}
             ]}
            ,async(err,doc)=>{
          if(err) console.log(err);
@@ -19,74 +23,48 @@ var article = Articles();
               
          // getting data
          var Data = doc;
+         console.log(Data.length)
          // downloding images 
         await Data.map((item, i) => {
           try{
             console.log("show",item.articleImageURL)
             var url =item.articleImageURL;
-           var other_url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
+            var other_url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
 
             if(item.articleImageURL==="" || item.articleImageURL==null || typeof(item.articleImageURL)==="undefined"){
                 url = "https://ichef.bbci.co.uk/news/385/cpsprodpb/83B3/production/_115651733_breaking-large-promo-nc.png";
                  console.log('new url downloaded')
             }
 
-            if(item.articleImageURL.indexOf('.jpg')!=-1){
-              url = item.articleImageURL.substring(0,item.articleImageURL.indexOf('.jpg')+4)
-            }else{
-                if(item.articleImageURL.indexOf('.png')!=-1){
-                    url = item.articleImageURL.substring(0,item.articleImageURL.indexOf('.jpg')+4)
-                }else{
-                    if(item.articleImageURL.indexOf('.jpeg')!=-1){
-                        url = item.articleImageURL.substring(0,item.articleImageURL.indexOf('.jpg')+4)
-                    }          
-                }
-            }
+
              setTimeout(async() => {
                  console.log(url)
                 try{
-                await Download(url, i)
+                await Download(url,item,ID,i)
                     .then((name) => {
                         console.log("index of " + name);
                     })
                 }catch(e){
                   console.log('error here 1 ',e)
-                  await Download(other_url, i)
+                  await Download(other_url,item,ID,i)
                     .then((name) => {
                         console.log("index of " + name);
-                    })
+                    });
                 }
-             }, 1000*i);
+                console.log('it will take about '+5000*i)
+             }, 5000*i);
+
+                // insert all data to website
           }catch{
            console.log("error here 2 ",item.articleImageURL)
           }
          });
- 
- 
-
-
-
-         // insert all data to website
-         setTimeout(async() => {
-             try {
-                 await Data.forEach((element, index) => {
-                     var timeout = (parseInt(index) + 1) * 10000
-                     console.log(timeout)
-                     setTimeout(() => {
-                         var _tags = tags == [0] ? tags : [1, 2]
-                         Post(element.articleTitle, category_ID, _tags, element.articleDescription, element.mediaName,element.articleSourceLink, index)
-                     }, timeout);
-                 })
-             } catch (err) {
-                 console.log(err);
-             }
-         }, 20000);
-
 
          }
-    })
-
-       
-
+    }).limit(40);
 }
+
+
+
+
 module.exports = { GetArticles }
