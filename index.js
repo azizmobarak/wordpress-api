@@ -101,18 +101,18 @@ var All_Keys7 = FormatKeys(keys7);
          
 
 // cat 1
- var count =0;
-cron.schedule('59 */23 * * *', () => {
- GetArticles(All_Keys1[count],cat1, [1,2], lang);
+var count =0;
+cron.schedule('00 */3 * * *', () => {
+ GetArticles(All_Keys1[count],cat1);
     count++;
-   if(count==All_Keys1.length){count = 0}    
+    if(count==All_Keys1.length){count = 0}    
 });
 
         
 //cat 2
 var num = 0;
- cron.schedule('59 */23 * * *', () => {
-  GetArticles(All_Keys2[num], cat2,  [1,2], lang);
+ cron.schedule('03 */3 * * *', () => {
+  GetArticles(All_Keys2[num], cat2);
     num++;
     if(num==All_Keys2.length){num = 0}    
  });
@@ -120,8 +120,8 @@ var num = 0;
 
  //cat 3
   var num2 = 0;
- cron.schedule('59 */23 * * *', () => {
-   GetArticles(All_Keys3[num2], cat3,  [1,2], lang);
+ cron.schedule('6 */3 * * *', () => {
+    GetArticles(All_Keys3[num2], cat3);
      num2++;
     if(num2==All_Keys3.length){num2 = 0}    
  });
@@ -130,8 +130,8 @@ var num = 0;
 
  //cat 4
  var num3 = 0;
-  cron.schedule('59 */23 * * *', () => {
- GetArticles(All_Keys4[num3],cat4,  [1,2], lang);
+  cron.schedule('9 */3 * * *', () => {
+ GetArticles(All_Keys4[num3],cat4);
      num3++;
      if(num3==All_Keys4.length){num3 = 0}    
   });
@@ -139,8 +139,8 @@ var num = 0;
 
 //cat 5
      var num4 = 0;
-cron.schedule('59 */23 * * *', () => {
-    GetArticles(All_Keys5[num4],cat5,  [1,2], lang);
+cron.schedule('12 */3 * * *', () => {
+    GetArticles(All_Keys5[num4],cat5);
      num4++;
      if(num4==All_Keys5.length){num4 = 0}    
 });
@@ -148,8 +148,8 @@ cron.schedule('59 */23 * * *', () => {
 
 //cat 6
 var num5 = 0;
-cron.schedule('59 */23 * * *', () => {
-     GetArticles(All_Keys6[num5],cat6,  [1,2], lang);
+cron.schedule('15 */3 * * *', () => {
+     GetArticles(All_Keys6[num5],cat6);
      num5++;
      if(num5==All_Keys6.length){num5 = 0}    
 });
@@ -157,8 +157,8 @@ cron.schedule('59 */23 * * *', () => {
 
 //cat 7
 var num6 = 0;
-cron.schedule('59 */23 * * *', () => {
-     GetArticles(All_Keys7[num6],cat7,[1,2], lang);
+cron.schedule('18 */3 * * *', () => {
+     GetArticles(All_Keys7[num6],cat7);
      num6++;
      if(num6==All_Keys7.length){num6 = 0}    
 });
