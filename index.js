@@ -153,11 +153,11 @@ cron.schedule('20 */3 * * *', () => {
 
 // cat 6
 var num5 = 2;
-//cron.schedule('25 */3 * * *', () => {
+cron.schedule('25 */3 * * *', () => {
      GetArticles(All_Keys6[num5],cat6);
      num5++;
      if(num5==All_Keys6.length){num5 = 0}    
-//});
+});
 
 
 // cat 7
