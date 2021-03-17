@@ -101,7 +101,7 @@ var All_Keys7 = FormatKeys(keys7);
          
 
 // cat 1
-var count =0;
+var count =1;
 cron.schedule('00 */3 * * *', () => {
  GetArticles(All_Keys1[count],cat1);
     count++;

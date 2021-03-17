@@ -26,26 +26,36 @@ async function Download(img,item,ID,i) {
     console.log("Downloading ... " + i)
     const response = await fetch(encodedURI);
     const buffer = await response.buffer();
-    await fs.writeFile("./images/"+i+"."+img.split('.').pop(), buffer, async(err, data) => {
+    await fs.writeFile("./images/"+i+"."+getExtension(img), buffer, async(err, data) => {
         if (err) return -1;
         else {
             console.log('finished downloading! image')
-            await InsertArticle(item,ID,i)
+            await InsertArticle(item,ID,i,getExtension(img))
         }
     });
 }
 
+//get extension of the image
+function getExtension(img){
+    var lastChar = img.split('.').pop();
+    if(lastChar.indexOf('jpeg')!=-1){
+         return img.split('.').pop().substring(0,4)
+    }else{
+         return img.split('.').pop().substring(0,3)
+    }
+}
+
 //insert Article with Image
-async function InsertArticle(element,category_ID,i){
+async function InsertArticle(element,category_ID,i,extension){
     try {
      var _tags =[1, 2]
-    await Post(element.articleTitle, category_ID, _tags, element.articleDescription, element.mediaName,element.articleSourceLink,i)
+    await Post(element.articleTitle, category_ID, _tags, element.articleDescription, element.mediaName,element.articleSourceLink,i,extension)
   } catch (err) {
     console.log(err);
 }
 }
 
-//data
+//data structure
 const DataArticle = (title, categories, tags, description, slug,link) => ({
     'title': title,
     'categories': categories,
@@ -55,18 +65,19 @@ const DataArticle = (title, categories, tags, description, slug,link) => ({
     'link':link
 })
 
-const Post = async(title, categories, tags, description, slug,link,i) => {
+// retrieve data and pass it to insert function
+const Post = async(title, categories, tags, description, slug,link,i,extension) => {
     console.log("in post")
     var data = await DataArticle(title, categories, tags, description, slug,link)
-    await AddallToWP(data,i)
+    await AddallToWP(data,i,extension)
 }
 
 
 
 // all the job done by wpai in one single call function
-const AddallToWP = async(data,i) => {
-    
-    var path_img = await Path.resolve(__dirname, "./images/"+i+`.jpg`)
+const AddallToWP = async(data,i,extension) => {
+    //path of image
+    var path_img = await Path.resolve(__dirname, "./images/"+i+"."+extension)
 
     try {
         await WP.posts().create({
