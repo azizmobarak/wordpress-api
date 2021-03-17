@@ -81,7 +81,7 @@ const AddallToWP = async(data,i,extension) => {
 
     try {
         await WP.posts().create({
-            title: data.title,
+           title: data.title,
             status: 'publish',
             categories: data.categories,
             tags: data.tags,

@@ -37,7 +37,7 @@ var article = Articles();
             }
 
 
-            if(url.indexOf('jpg')!=-1 || url.indexOf('jpeg')!=-1 || url.indexOf('png')!=-1){
+          if(url.indexOf('jpg')!=-1 || url.indexOf('jpeg')!=-1 || url.indexOf('png')!=-1){
               setTimeout(async() => {
                 console.log(url)
                try{
