@@ -15,7 +15,7 @@ var article = Articles();
        article.find(
           {$and :
             [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
-              {articleCreatedDate : {$gte:date}},{articleLanguage:lang},{articleSourceLink:{$ne:null}}
+              {articleCreatedDate : {$gte:date}},{articleLanguage:lang},{articleImageURL:{$ne:null}}
             ]}
            ,async(err,doc)=>{
          if(err) console.log(err);
@@ -37,24 +37,27 @@ var article = Articles();
             }
 
 
-             setTimeout(async() => {
-                 console.log(url)
-                try{
-                await Download(url,item,ID,i)
-                    .then((name) => {
-                        console.log("index of " + name);
-                    })
-                }catch(e){
-                  console.log('error here 1 ',e)
-                  await Download(other_url,item,ID,i)
-                    .then((name) => {
-                        console.log("index of " + name);
-                    });
-                }
-                console.log('it will take about '+5000*i)
-             }, 5000*i);
+            if(url.indexOf('jpg')!=-1 || url.indexOf('jpeg')!=-1 || url.indexOf('png')!=-1){
+              setTimeout(async() => {
+                console.log(url)
+               try{
+               await Download(url,item,ID,i)
+                   .then((name) => {
+                       console.log("index of " + name);
+                   })
+               }catch(e){
+                 console.log('error here 1 ',e)
+                 await Download(other_url,item,ID,i)
+                   .then((name) => {
+                       console.log("index of " + name);
+                   });
+               }
+               console.log('it will take about '+5000*i)
+            }, 5000*i);
+            }else{
+              console.log('not inserted')
+            }
 
-                // insert all data to website
           }catch{
            console.log("error here 2 ",item.articleImageURL)
           }
