@@ -14,8 +14,10 @@ console.log(lang)
 var article = Articles();
        article.find(
           {$and :
-            [ {$or : [{'articleTitle':  {'$regex': category} },{'articleDescription': {'$regex': category} }]},
-              {articleCreatedDate : {$gte:date}},{articleLanguage:lang},{articleImageURL:{$ne:null}}
+            [ { categoryName:  {'$regex': category} },
+              {articleCreatedDate : {$gte:date}},
+              {articleLanguage:lang},
+              {articleImageURL:{$ne:null}}
             ]}
            ,async(err,doc)=>{
          if(err) console.log(err);
