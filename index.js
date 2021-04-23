@@ -51,76 +51,73 @@ var cat12 = process.env.CAT12;
 // start program
 
 // cat 1
-// cron.schedule('00 */12 * * *', () => {
+cron.schedule('00 */1 * * *', () => {
  GetArticles(cat1,id1);
-// });
+});
 
 
 //cat 2
- cron.schedule('03 */12 * * *', () => {
+ cron.schedule('05 */1 * * *', () => {
      GetArticles(cat2,id2);
  });
 
 
  //cat 3
- cron.schedule('6 */12 * * *', () => {
+ cron.schedule('10 */1 * * *', () => {
      GetArticles(cat3,id3);
  });
 
 
 
  //cat 4
-  cron.schedule('9 */12 * * *', () => {
+  cron.schedule('14 */1 * * *', () => {
      GetArticles(cat4,id4);
   });
 
 
 //cat 5
-cron.schedule('12 */12 * * *', () => {
+cron.schedule('18 */1 * * *', () => {
      GetArticles(cat5,id5);
 });
 
 
-// //cat 6
-// var num5 = 0;
-// cron.schedule('15 */3 * * *', () => {
-//      GetArticles(All_Keys6[num5],cat6);
-//      num5++;
-//      if(num5==All_Keys6.length){num5 = 0}
-// });
+//cat 6
+cron.schedule('22 */1 * * *', () => {
+     GetArticles(cat6,id6);
+});
 
 
 //cat 7
-cron.schedule('18 */12 * * *', () => {
+cron.schedule('27 */1 * * *', () => {
      GetArticles(cat7,id7);
 });
 
 
 // cat 8
-cron.schedule('21 */12 * * *', () => {
+cron.schedule('30 */1 * * *', () => {
      GetArticles(cat8,id8);
 });
 
 
 // cat 9
-cron.schedule('24 */12 * * *', () => {
+cron.schedule('33 */1 * * *', () => {
      GetArticles(cat9,id9);
 });
 
 
 // cat 10
-cron.schedule('27 */12 * * *', () => {
+cron.schedule('37 */1 * * *', () => {
      GetArticles(cat10,id10);
 });
 
 
 // cat 11
-cron.schedule('30 */12 * * *', () => {
+cron.schedule('41 */1 * * *', () => {
      GetArticles(cat11,id11);
 });
 
 // cat 12
-cron.schedule('33 */12 * * *', () => {
+cron.schedule('45 */1 * * *', () => {
      GetArticles(cat12,id12);
 });
 
