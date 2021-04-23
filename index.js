@@ -51,9 +51,9 @@ var cat12 = process.env.CAT12;
 // start program
 
 // cat 1
-cron.schedule('00 */12 * * *', () => {
+// cron.schedule('00 */12 * * *', () => {
  GetArticles(cat1,id1);
-});
+// });
 
 
 //cat 2

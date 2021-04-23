@@ -7,9 +7,8 @@ const moment = require('moment');
 const GetArticles = async(category,ID) => {
 
 var date = moment().subtract(1,'day').toDate();
-var lang = process.env.LANG.substring(0,2);
+var lang = "ar";
 
-console.log(lang)
 
 var article = Articles();
        article.find(
