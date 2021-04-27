@@ -23,13 +23,13 @@ var id9 = [parseInt(process.env.ID9)];
 var id10 = [parseInt(process.env.ID10)];
 var id11 = [parseInt(process.env.ID11)];
 var id12 = [parseInt(process.env.ID12)];
-// var cat13 = [parseInt(process.env.CAT13)];
-// var cat14 = [parseInt(process.env.CAT14)];
-// var cat15 = [parseInt(process.env.CAT15)];
-// var cat16 = [parseInt(process.env.CAT16)];
-// var cat17 = [parseInt(process.env.CAT17)];
-// var cat18 = [parseInt(process.env.CAT18)];
-// var cat19 = [parseInt(process.env.CAT19)];
+var cat13 = [parseInt(process.env.ID13)];
+var cat14 = [parseInt(process.env.ID14)];
+var cat15 = [parseInt(process.env.ID15)];
+var cat16 = [parseInt(process.env.ID16)];
+var cat17 = [parseInt(process.env.ID17)];
+var cat18 = [parseInt(process.env.ID18)];
+var cat19 = [parseInt(process.env.ID19)];
 // var cat20 = [parseInt(process.env.CAT20)];
 
 
@@ -46,18 +46,25 @@ var cat9 = process.env.CAT9;
 var cat10 = process.env.CAT10;
 var cat11 = process.env.CAT11;
 var cat12 = process.env.CAT12;
+var cat13 = process.env.CAT13;
+var cat14 = process.env.CAT14;
+var cat15 = process.env.CAT15;
+var cat16 = process.env.CAT16;
+var cat17 = process.env.CAT17;
+var cat18 = process.env.CAT18;
+var cat19 = process.env.CAT19;
 
 
 // start program
 
 // cat 1
-cron.schedule('00 */1 * * *', () => {
+cron.schedule('04 */1 * * *', () => {
  GetArticles(cat1,id1);
 });
 
 
 //cat 2
- cron.schedule('05 */1 * * *', () => {
+ cron.schedule('07 */1 * * *', () => {
      GetArticles(cat2,id2);
  });
 
@@ -119,6 +126,39 @@ cron.schedule('41 */1 * * *', () => {
 // cat 12
 cron.schedule('45 */1 * * *', () => {
      GetArticles(cat12,id12);
+});
+
+
+cron.schedule('47 */1 * * *', () => {
+     GetArticles(cat13,id13);
+});
+
+
+cron.schedule('50 */1 * * *', () => {
+     GetArticles(cat14,id14);
+});
+
+
+cron.schedule('52 */1 * * *', () => {
+     GetArticles(cat15,id16);
+});
+
+
+cron.schedule('54 */1 * * *', () => {
+     GetArticles(cat16,id17);
+});
+
+
+cron.schedule('56 */1 * * *', () => {
+     GetArticles(cat17,id18);
+});
+
+cron.schedule('58 */1 * * *', () => {
+     GetArticles(cat18,id18);
+});
+
+cron.schedule('01 */1 * * *', () => {
+     GetArticles(cat19,id19);
 });
 
 
