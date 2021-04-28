@@ -23,13 +23,13 @@ var id9 = [parseInt(process.env.ID9)];
 var id10 = [parseInt(process.env.ID10)];
 var id11 = [parseInt(process.env.ID11)];
 var id12 = [parseInt(process.env.ID12)];
-var cat13 = [parseInt(process.env.ID13)];
-var cat14 = [parseInt(process.env.ID14)];
-var cat15 = [parseInt(process.env.ID15)];
-var cat16 = [parseInt(process.env.ID16)];
-var cat17 = [parseInt(process.env.ID17)];
-var cat18 = [parseInt(process.env.ID18)];
-var cat19 = [parseInt(process.env.ID19)];
+var id13 = [parseInt(process.env.ID13)];
+var id14 = [parseInt(process.env.ID14)];
+var id15 = [parseInt(process.env.ID15)];
+var id16 = [parseInt(process.env.ID16)];
+var id17 = [parseInt(process.env.ID17)];
+var id18 = [parseInt(process.env.ID18)];
+var id19 = [parseInt(process.env.ID19)];
 // var cat20 = [parseInt(process.env.CAT20)];
 
 
