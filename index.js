@@ -64,13 +64,13 @@ cron.schedule('04 */1 * * *', () => {
 
 
 //cat 2
- cron.schedule('07 */1 * * *', () => {
+   cron.schedule('07 */1 * * *', () => {
      GetArticles(cat2,id2);
  });
 
 
  //cat 3
- cron.schedule('10 */1 * * *', () => {
+  cron.schedule('10 */1 * * *', () => {
      GetArticles(cat3,id3);
  });
 
@@ -148,7 +148,7 @@ cron.schedule('54 */1 * * *', () => {
      GetArticles(cat16,id17);
 });
 
-
+// ----
 cron.schedule('56 */1 * * *', () => {
      GetArticles(cat17,id18);
 });
