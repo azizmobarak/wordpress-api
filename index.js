@@ -58,9 +58,10 @@ var cat19 = process.env.CAT19;
 // start program
 
 // cat 1
-cron.schedule('04 */1 * * *', () => {
+//cron.schedule('04 */1 * * *', () => {
  GetArticles(cat1,id1);
-});
+ console.log("here")
+//});
 
 
 //cat 2
