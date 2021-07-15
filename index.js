@@ -141,26 +141,26 @@ cron.schedule('50 */1 * * *', () => {
 
 
 cron.schedule('52 */1 * * *', () => {
-     GetArticles(cat15,id16);
+     GetArticles(cat15,id15);
 });
 
 
 cron.schedule('54 */1 * * *', () => {
-     GetArticles(cat16,id17);
+     GetArticles(cat16,id16);
 });
 
 // ----
 cron.schedule('56 */1 * * *', () => {
-     GetArticles(cat17,id18);
+     GetArticles(cat17,id17);
 });
 
 cron.schedule('58 */1 * * *', () => {
      GetArticles(cat18,id18);
 });
 
-cron.schedule('01 */1 * * *', () => {
+// cron.schedule('01 */1 * * *', () => {
      GetArticles(cat19,id19);
-});
+// });
 
 
 // // cat 13
