@@ -158,9 +158,9 @@ cron.schedule('58 */1 * * *', () => {
      GetArticles(cat18,id18);
 });
 
-// cron.schedule('01 */1 * * *', () => {
+cron.schedule('01 */1 * * *', () => {
      GetArticles(cat19,id19);
-// });
+});
 
 
 // // cat 13
